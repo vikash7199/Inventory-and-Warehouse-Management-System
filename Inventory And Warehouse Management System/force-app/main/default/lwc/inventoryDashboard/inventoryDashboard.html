@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Inventory Dashboard" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-datatable
+                key-field="id"
+                data={inventoryData}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                max-row-selection="1">
+            </lightning-datatable>
+            <template if:true={lowStockAlert}>
+                <lightning-alert
+                    variant="warning"
+                    title="Low Stock Alert"
+                    message={lowStockMessage}
+                    icon-name="utility:warning">
+                </lightning-alert>
+            </template>
+        </div>
+    </lightning-card>
+</template>

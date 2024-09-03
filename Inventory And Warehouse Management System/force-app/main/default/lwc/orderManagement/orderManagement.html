@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Order Management Dashboard" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-datatable
+                key-field="id"
+                data={OrderManagementData}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                max-row-selection="1">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

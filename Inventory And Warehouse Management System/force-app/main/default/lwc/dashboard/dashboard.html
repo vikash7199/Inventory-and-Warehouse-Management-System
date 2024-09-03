@@ -1,0 +1,37 @@
+<!-- inventoryDashboard.html -->
+<template>
+    <div class="inventory-dashboard">
+        <h1>Inventory Dashboard</h1>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Warehouse</th>
+                    <th>Product</th>
+                    <th>Quantity in Stock</th>
+                    <th>Reorder Status</th>
+                    <th>Last Restock Date</th>
+                    <th>Alerts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#for (let inventory of inventories)}
+                <tr key={inventory.Id}>
+                    <td>{inventory.Warehouse__r.Name}</td>
+                    <td>{inventory.Product__r.Name}</td>
+                    <td>{inventory.Quantity_in_Stock__c}</td>
+                    <td>{inventory.Reorder_Status__c}</td>
+                    <td>{inventory.Last_Restock_Date__c}</td>
+                    <td>
+                        {#if inventory.Quantity_in_Stock__c <= inventory.Product__r.Reorder_Level__c}
+                            <span class="alert">Low Stock!</span>
+                        {/if}
+                        {#if inventory.Reorder_Status__c === 'Reorder Needed'}
+                            <span class="alert">Reorder Needed!</span>
+                        {/if}
+                    </td>
+                </tr>
+                {/for}
+            </tbody>
+        </table>
+    </div>
+</template>
